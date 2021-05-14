@@ -1,0 +1,50 @@
+Sample Input:
+2
+5
+23 2 4 1 -1
+8
+34 56 -1 4 67 2 -1 43
+
+Sample Output:
+23 2 4 1 7
+34 56 45 4 67 2 34 43
+EXPLANATION:
+Example Case 1: For last area, ⌊(23+2+4+1)4⌋=7 bullets
+Example Case 2: For 3rd area, ⌊(34+56)2⌋=45 bullets
+Then, for 7th area, ⌊(34+56+45+4+67+2)6⌋=34 bullets
+
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        ll n;
+        cin>>n;
+        ll a[n];
+        for(int i=0;i<n;i++)
+        {
+            cin>>a[i];
+        }
+        ll sum=0;
+        for(int i=0;i<n;i++)
+        {
+            if(a[i] == -1)
+            {
+                cout<< sum/i<<" ";
+                sum+=(sum/i);
+            }
+            else{
+                cout<<a[i]<<" ";
+                sum+=a[i];
+            }
+        }
+        cout<<"\n";
+
+    }
+
+    return 0;
+}
