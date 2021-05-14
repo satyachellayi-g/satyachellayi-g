@@ -1,0 +1,69 @@
+for each function  you need to find the summation of all primes between the integers l and r inclusive.
+Sample Input
+2
+1 6
+4 13
+Sample Output
+10
+36
+
+#include<bits/stdc++.h>
+#define ll long long int
+#define ull unsigned long long int
+#define mod 1000000007
+#define size 1000001
+using namespace std;
+bool a[size];
+void sieve()
+{
+    for (int i = 0; i < size; i++)
+    {
+        a[i] = true;
+    }
+    a[0] = a[1] = false;
+    for (int i = 2; i <= sqrt(size); i++)
+    {
+        if (a[i] == true)
+        {
+            for (int j = i * i; j < size; j += i)
+            {
+                a[j] = false;
+            }
+        }
+    }
+}
+ll dp[size];
+void sums()
+{
+    dp[0] = dp[1] = 0;
+    for (int i = 2; i < size; i++)
+    {
+        if (a[i] == true)
+        {
+            dp[i] = i + dp[i - 1];
+        }
+        else
+        {
+            dp[i] = dp[i - 1];
+        }
+    }
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    sieve();
+    sums();
+ 
+ 
+    ll t;
+    cin >> t;
+    while (t--)
+    {
+        ll l, r;
+        cin >> l >> r;
+        ll ans = dp[r] - dp[l - 1];
+        cout << ans << "\n";
+    }
+}
