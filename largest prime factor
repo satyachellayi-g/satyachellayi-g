@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+ 
+int solve(long long n){
+	while(n % 2 == 0) n /=2;
+	if(n == 1) return 2;
+ 
+	int p = 1;
+	while(n > 1){
+		p += 2;
+		while(n % p == 0) n/=p;
+	}
+ 
+	return p;
+}
+ 
+int main(){
+	int t;
+	cin >> t;
+	while(t--){
+		long long int n;
+		cin >> n;
+		cout << solve(n) << endl;
+	}
+}
