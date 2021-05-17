@@ -1,0 +1,18 @@
+void set_k(int n,int k)
+{
+    n = n | (1 << k);
+    cout << n;
+}
+int main()
+{
+	int t;
+	cin >> t;
+	while(t--)
+	{
+	    int n,k;
+	    cin >> n >> k;
+	    set_k(n,k);
+	    cout << "\n";
+	}
+	return 0;
+}
