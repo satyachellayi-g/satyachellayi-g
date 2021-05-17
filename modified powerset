@@ -1,0 +1,47 @@
+Sample Input
+2
+abcde
+abc
+Sample Output
+15
+6
+
+using namespace std;
+ 
+int main()
+ 
+{
+ 
+int num;
+ 
+cin >> num;
+ 
+while(num--)
+ 
+{
+ 
+set<char>str;
+ 
+string s1;
+ 
+cin >> s1;
+ 
+for(char x:s1)
+ 
+{
+ 
+str.insert(x);
+ 
+}
+ 
+long long int t = str.size();
+ 
+long long int f = t*(t+1)/2;
+ 
+cout << f << endl;
+ 
+}
+ 
+return 0;
+ 
+}
